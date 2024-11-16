@@ -16,6 +16,17 @@ cp .env.example .env
 nano .env
 # run
 python bot.py
+# create user to run the service 
+sudo adduser --system --no-create-home --group whereami_bot
+sudo chown -R alifeee:whereami_bot embeds/
+sudo chown -R alifeee:whereami_bot name/
+sudo chown -R alifeee:whereami_bot status/
+sudo chown -R alifeee:whereami_bot updates/
+# enable service
+cp whereami_bot.service /etc/systemd/system/whereami_bot.service
+sudo systemctl enable whereami_bot.service
+sudo systemctl start whereami_bot.service
+sudo systemctl status whereami_bot.service
 ```
 
 Send either a location to the bot with `/location 51.12512 -1.21511`, or share a location (including live location) and a file like `embeds/2987827852.html` should be created with an OpenStreetMap (OSM) HTML embed within it. Clear your location with `/location clear`.

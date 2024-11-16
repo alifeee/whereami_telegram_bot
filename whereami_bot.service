@@ -1,0 +1,16 @@
+[Unit]
+Description=Bot to provide status updates using Telgram
+After=network.target
+
+[Service]
+User=whereami_bot
+Group=whereami_bot
+
+ExecStart=/usr/alifeee/whereami_telegram_bot/env/bin/python /usr/alifeee/whereami_telegram_bot/bot.py
+WorkingDirectory=/usr/alifeee/whereami_telegram_bot
+
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
